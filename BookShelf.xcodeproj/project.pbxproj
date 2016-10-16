@@ -16,10 +16,12 @@
 		BF006E071D99500D000814A4 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF006E061D99500D000814A4 /* SWRevealViewController.m */; };
 		BF006E091D995308000814A4 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF006E081D995308000814A4 /* MenuVC.swift */; };
 		BF006E0C1D9AA452000814A4 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF006E0B1D9AA452000814A4 /* User.storyboard */; };
+		BF036D7C1DAD4AAA00F11BB6 /* UIUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF036D7B1DAD4AAA00F11BB6 /* UIUtil.swift */; };
 		BF1D738F1D9BB5820063AA7B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D738E1D9BB5820063AA7B /* UserService.swift */; };
 		BF1D73911D9BB6F20063AA7B /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D73901D9BB6F20063AA7B /* SigninVC.swift */; };
 		BF1D73931D9BB8110063AA7B /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D73921D9BB8110063AA7B /* SignUpVC.swift */; };
 		BFCE2CBE1DA2DD3D00C1BBDD /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE2CBD1DA2DD3D00C1BBDD /* KeychainSwiftDistrib.swift */; };
+		BFF55B2C1DA4209200ABC702 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF55B2B1DA4209200ABC702 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +39,12 @@
 		BF006E061D99500D000814A4 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		BF006E081D995308000814A4 /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		BF006E0B1D9AA452000814A4 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		BF036D7B1DAD4AAA00F11BB6 /* UIUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtil.swift; sourceTree = "<group>"; };
 		BF1D738E1D9BB5820063AA7B /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BF1D73901D9BB6F20063AA7B /* SigninVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
 		BF1D73921D9BB8110063AA7B /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		BFCE2CBD1DA2DD3D00C1BBDD /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
+		BFF55B2B1DA4209200ABC702 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F2C66A163EE7535790A9744A /* Pods-BookShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookShelf.release.xcconfig"; path = "Pods/Target Support Files/Pods-BookShelf/Pods-BookShelf.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -97,6 +101,7 @@
 				BF006E0A1D9A78E1000814A4 /* support files */,
 				BF006DF41D994EEA000814A4 /* HomeVC.swift */,
 				BF1D73901D9BB6F20063AA7B /* SigninVC.swift */,
+				BF036D7B1DAD4AAA00F11BB6 /* UIUtil.swift */,
 				BF1D738E1D9BB5820063AA7B /* UserService.swift */,
 				BF006DF21D994EEA000814A4 /* AppDelegate.swift */,
 				BF006DF61D994EEA000814A4 /* Main.storyboard */,
@@ -104,6 +109,7 @@
 				BF1D73921D9BB8110063AA7B /* SignUpVC.swift */,
 				BF006DFB1D994EEA000814A4 /* LaunchScreen.storyboard */,
 				BF006E081D995308000814A4 /* MenuVC.swift */,
+				BFF55B2B1DA4209200ABC702 /* Constants.swift */,
 			);
 			path = BookShelf;
 			sourceTree = "<group>";
@@ -250,11 +256,13 @@
 				BF1D73931D9BB8110063AA7B /* SignUpVC.swift in Sources */,
 				BF006E091D995308000814A4 /* MenuVC.swift in Sources */,
 				BF1D738F1D9BB5820063AA7B /* UserService.swift in Sources */,
+				BF036D7C1DAD4AAA00F11BB6 /* UIUtil.swift in Sources */,
 				BF1D73911D9BB6F20063AA7B /* SigninVC.swift in Sources */,
 				BF006DF51D994EEA000814A4 /* HomeVC.swift in Sources */,
 				BF006DF31D994EEA000814A4 /* AppDelegate.swift in Sources */,
 				BF006E071D99500D000814A4 /* SWRevealViewController.m in Sources */,
 				BFCE2CBE1DA2DD3D00C1BBDD /* KeychainSwiftDistrib.swift in Sources */,
+				BFF55B2C1DA4209200ABC702 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

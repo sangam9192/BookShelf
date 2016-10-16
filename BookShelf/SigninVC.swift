@@ -12,6 +12,14 @@ class SigninVC: UIViewController{
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+
+    
+    @IBAction func forgotPassword(_ sender: AnyObject) {
+        let userStoryBoard = UIStoryboard(name: "User", bundle: nil)
+        let forgotPasswordVC = userStoryBoard.instantiateViewController(withIdentifier: "signup") as! SignUpVC
+        forgotPasswordVC.signUp = false
+        self.present(forgotPasswordVC, animated: true, completion: nil)
+    }
     
     @IBAction func signIn(_ sender: AnyObject) {
         guard let username = usernameField.text else{
@@ -24,13 +32,18 @@ class SigninVC: UIViewController{
         UserServiceImpl().login(username: username, password: password, completion: {(status, message) in
             if status {
                 let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-                let homeVC = mainStoryBoard.instantiateViewController(withIdentifier: "main") 
-                self.present(homeVC, animated: true, completion: {})
+                let mainVC = mainStoryBoard.instantiateViewController(withIdentifier: "main")
+                self.present(mainVC, animated: true, completion: nil)
             }else{
-            
+                UIUtil.displayAlert(self, title: "Error", message: message)
             }
         })
     
     }
 
+    @IBAction func signUp(_ sender: AnyObject) {
+        let userStoryBoard = UIStoryboard(name: "User", bundle: nil)
+        let forgotPasswordVC = userStoryBoard.instantiateViewController(withIdentifier: "signup") as! SignUpVC
+        self.present(forgotPasswordVC, animated: true, completion: nil)
+    }
 }

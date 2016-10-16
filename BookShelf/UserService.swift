@@ -6,39 +6,55 @@ import SwiftyJSON
 protocol UserService {
     
     func login(username:String, password:String, completion: @escaping(Bool, String)->Void)
-    func signUp(name:String, email:String, password:String)
-    func resetPassword(email:String)
+    func signUp(name:String, email:String, password:String, completion:@escaping (Bool, String)->Void)
+    func resetPassword(email:String, completion:@escaping (Bool, String)->Void)
     static func isUserLoggedIn()->Bool
     static func logout()
 }
 
 class UserServiceImpl:UserService {
    
-    var loginUrl = "http://ec2-52-38-174-68.us-west-2.compute.amazonaws.com:3000/api/authenticate/login"
-    var signUpUrl = ""
-    var resetPasswordUrl = ""
     let keychain = KeychainSwift()
     
-    internal func resetPassword(email: String) {
+    internal func resetPassword(email: String, completion:@escaping (Bool, String)->Void) {
         print("Resetting password for \(email)")
-        Alamofire.request(resetPasswordUrl).response(completionHandler: {
+        Alamofire.request(Constants.FORGOT_PASSWORD_URL + email, method: .post, encoding: JSONEncoding.default).responseJSON{
             response in
             
-        })
+            print(response)
+            guard response.result.isSuccess else {
+                completion(false, "Error while resetting password. \(response.result.error)")
+                return
+            }
+            
+            let json = JSON(response.result.value)
+            
+            guard response.response?.statusCode == 200 else{
+                guard let message = json["message"].string else{
+                    completion(false, "Unknown response from server")
+                    return
+                }
+                completion(false, message)
+                return
+            }
+            completion(true, json["message"].string!)
+        }
     }
 
-    internal func signUp(name: String, email: String, password: String) {
+    internal func signUp(name: String, email: String, password: String, completion:@escaping (Bool, String)->Void) {
         print("Signing up new user name=\(name), email=\(email)")
-        Alamofire.request(resetPasswordUrl).response(completionHandler: {
+        Alamofire.request(Constants.BASE_URL).response(completionHandler: {
             response in
             
+            print(response)
+            completion(false, "Not yet Implemented")
         })
     }
 
     internal func login(username: String, password: String, completion:@escaping (Bool, String)->Void){
         let params = ["username" : username, "password" : password]
         print("Logging in username = \(username)")
-        Alamofire.request(loginUrl, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON{
+        Alamofire.request(Constants.LOGIN_URL, method: .post, parameters: params, encoding: JSONEncoding.default).responseJSON{
             response in
             
             guard response.result.isSuccess else {
@@ -50,14 +66,24 @@ class UserServiceImpl:UserService {
             let json = JSON(response.result.value)
             
             guard json["status"].boolValue else {
-                debugPrint(json["message"])
-                completion(false, json["message"].string!)
+                
+                guard let message = json["message"].string else{
+                    completion(false, "Unknown response from server")
+                    return
+                }
+                print("Message =\(json["message"])")
+                completion(false, message)
                 return
             }
             
-            print("User Successfully Logged in")
             UserDefaults.standard.set(username, forKey: "username")
-            UserDefaults.standard.set(json["data"].string, forKey: username+"_data")
+            guard let token = json["data"].string else{
+                completion(false, "Could not get auth token")
+                return
+            }
+            self.keychain.set(token , forKey: "token")
+            
+            print("User Successfully Logged in")
             completion(true, "User Successfully Logged in")
         }
     }

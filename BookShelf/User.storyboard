@@ -71,6 +71,9 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sI3-rr-pI6">
                                         <state key="normal" title="Forgot Password"/>
+                                        <connections>
+                                            <action selector="forgotPassword:" destination="6xm-S4-deJ" eventType="touchUpInside" id="2xi-ow-eQC"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -80,6 +83,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahZ-zx-6Hu">
                                 <frame key="frameInset" minX="141" minY="617" width="55" height="42"/>
                                 <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUp:" destination="6xm-S4-deJ" eventType="touchUpInside" id="MVM-wU-E60"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +110,7 @@
         <!--Sign UpVC-->
         <scene sceneID="3wj-ax-dal">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="VEt-kD-JI4" customClass="SignUpVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signup" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VEt-kD-JI4" customClass="SignUpVC" customModule="BookShelf" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B21-QK-BQG"/>
                         <viewControllerLayoutGuide type="bottom" id="Xs2-Wb-VsH"/>
@@ -163,7 +169,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="signUp:" destination="VEt-kD-JI4" eventType="touchUpInside" id="0BC-PL-cTK"/>
+                                            <action selector="signUp:" destination="VEt-kD-JI4" eventType="touchUpInside" id="I7w-fl-Awn"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -172,7 +178,7 @@
                                     <constraint firstItem="C9W-bH-IhV" firstAttribute="width" secondItem="uEB-pY-On4" secondAttribute="width" id="XmP-QM-BAW"/>
                                 </constraints>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="forgotPassword" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Vg-hw-fOt" userLabel="forgotPasswordView">
+                            <stackView opaque="NO" tag="2" contentMode="scaleToFill" restorationIdentifier="forgotPassword" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Vg-hw-fOt" userLabel="forgotPasswordView">
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will send a link on your registered email to reset your password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Olj-ta-m0A">
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -187,7 +193,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YKo-wn-8Uy">
                                         <state key="normal" title="Send Email"/>
                                         <connections>
-                                            <action selector="resetPassword:" destination="VEt-kD-JI4" eventType="touchUpInside" id="Np7-G9-hRy"/>
+                                            <action selector="resetPassword:" destination="VEt-kD-JI4" eventType="touchUpInside" id="jt8-Gu-4Ft"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -214,7 +220,6 @@
                         <outlet property="emailField" destination="aXi-bd-cpr" id="Svl-iI-YK4"/>
                         <outlet property="nameField" destination="j2Q-Pj-eWz" id="Txn-Ve-L5F"/>
                         <outlet property="passwordField" destination="Ad4-qO-tMk" id="AY8-ea-YiN"/>
-                        <outlet property="resetPasswordButton" destination="YKo-wn-8Uy" id="qF5-Bw-Wag"/>
                         <outlet property="resetPasswordEmailField" destination="ngK-7K-Way" id="XZv-58-Vw3"/>
                     </connections>
                 </viewController>

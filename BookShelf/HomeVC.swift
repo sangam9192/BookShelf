@@ -12,6 +12,9 @@ class HomeVC: UIViewController {
 
     @IBAction func logout(_ sender: AnyObject) {
         UserServiceImpl.logout()
+        let userStoryBoard = UIStoryboard(name: "User", bundle: nil)
+        let signinVC = userStoryBoard.instantiateViewController(withIdentifier: "signin")
+        present(signinVC, animated: true, completion: nil)
     }
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var label: UILabel!

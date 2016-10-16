@@ -3,7 +3,7 @@ import Foundation
 
 class SignUpVC:UIViewController{
     
-    var signUp = false
+    var signUp = true
     let userService:UserService = UserServiceImpl()
     
     @IBOutlet weak var nameField: UITextField!
@@ -11,7 +11,7 @@ class SignUpVC:UIViewController{
     @IBOutlet weak var passwordField: UITextField!
     
     @IBOutlet weak var resetPasswordEmailField: UITextField!
-    @IBOutlet weak var resetPasswordButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +24,46 @@ class SignUpVC:UIViewController{
         }
     }
     
-    @IBAction func signUp(sender: AnyObject) {
-        userService.signUp(name: nameField.text!, email: emailField.text!, password: passwordField.text!)
+    
+    
+    
+    @IBAction func resetPassword(_ sender: AnyObject) {
+        userService.resetPassword(email: resetPasswordEmailField.text!,  completion: {(status, message) in
+            let okAction:UIAlertAction  = UIAlertAction(title: "OK", style: .default){
+                _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            let retryAction:UIAlertAction  = UIAlertAction(title: "Retry", style: .default)
+            let cancelAction:UIAlertAction  = UIAlertAction(title: "Cancel", style: .default){
+                _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            print(status)
+            if status {
+                UIUtil.displayAlert(self, title: "Success", message: message, actions: [okAction])
+            }else{
+                UIUtil.displayAlert(self, title: "Error", message: message, actions: [retryAction, cancelAction])
+            }
+        })
     }
     
-    @IBAction func resetPassword(sender: AnyObject) {
-        userService.resetPassword(email: resetPasswordEmailField.text!)
+    @IBAction func signUp(_ sender: AnyObject) {
+        userService.signUp(name: nameField.text!, email: emailField.text!, password: passwordField.text!, completion: {(status, message) in
+            let okAction:UIAlertAction  = UIAlertAction(title: "OK", style: .default){
+                _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            let retryAction:UIAlertAction  = UIAlertAction(title: "Retry", style: .default)
+            let cancelAction:UIAlertAction  = UIAlertAction(title: "Cancel", style: .default){
+                _ in
+                self.dismiss(animated: true, completion: nil)
+            }
+            print(status)
+            if status {
+                UIUtil.displayAlert(self, title: "Success", message: message, actions: [okAction])
+            }else{
+                UIUtil.displayAlert(self, title: "Error", message: message, actions: [retryAction, cancelAction])
+            }
+        })
     }
-    
-    
 }
